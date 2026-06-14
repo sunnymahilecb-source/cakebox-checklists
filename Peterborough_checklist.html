@@ -10,443 +10,445 @@
 body{font-family:system-ui,sans-serif;background:#f5f5f5;color:#222;padding:1rem}
 .app{max-width:700px;margin:0 auto;padding:1rem 0}
 h1{font-size:17px;font-weight:600;text-align:center;margin-bottom:4px;color:#1a1a2e}
-.location-tag{text-align:center;font-size:13px;color:#888;margin-bottom:1rem}
-.tab-btns{display:flex;gap:6px;margin-bottom:1rem}
-.tab-btn{flex:1;padding:8px;font-size:13px;border-radius:8px;border:1px solid #ccc;background:#eee;color:#555;cursor:pointer}
+.loc{text-align:center;font-size:13px;color:#888;margin-bottom:1rem}
+.tabs{display:flex;gap:6px;margin-bottom:1rem}
+.tab-btn{flex:1;padding:8px;font-size:13px;border-radius:8px;border:1px solid #ccc;background:#eee;color:#555;cursor:pointer;font-family:system-ui,sans-serif}
 .tab-btn.active{background:#1a1a2e;color:white;border-color:#1a1a2e}
-.top-bar{background:#fff;border:1px solid #ddd;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.top-bar select,.top-bar input{flex:1;min-width:140px;padding:6px 10px;border:1px solid #ccc;border-radius:8px;font-size:14px}
-.section{border:1px solid #ddd;border-radius:12px;margin-bottom:1rem;overflow:hidden;background:#fff}
-.section-header{display:flex;align-items:center;gap:10px;padding:0.75rem 1rem;cursor:pointer;user-select:none}
-.section-header i{font-size:18px}
-.section-header h2{font-size:15px;font-weight:500;flex:1}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.top-bar{background:#fff;border:1px solid #ddd;border-radius:12px;padding:1rem;margin-bottom:1rem;display:flex;gap:12px;flex-wrap:wrap}
+.top-bar select,.top-bar input[type=date]{flex:1;min-width:140px;padding:8px 10px;border:1px solid #ccc;border-radius:8px;font-size:14px;font-family:system-ui,sans-serif}
+.progress-bar{height:5px;background:#ddd;border-radius:3px;margin-bottom:1rem}
+.progress-fill{height:100%;background:#2d6a4f;border-radius:3px;transition:width 0.3s;width:0%}
+.section{border:1px solid #ddd;border-radius:12px;margin-bottom:1rem;background:#fff;overflow:hidden}
+.sec-header{display:flex;align-items:center;gap:10px;padding:0.75rem 1rem;cursor:pointer}
+.sec-header i{font-size:18px}
+.sec-header h2{font-size:15px;font-weight:500;flex:1;margin:0}
 .badge{font-size:12px;padding:3px 10px;border-radius:20px}
-.section-body{padding:0.75rem 1rem 1rem;border-top:1px solid #eee}
-.items-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px 1rem}
-@media(max-width:500px){.items-grid{grid-template-columns:1fr}}
-.check-item{display:flex;align-items:flex-start;gap:8px;padding:5px 0;cursor:pointer}
-.check-item input[type=checkbox]{margin-top:3px;width:16px;height:16px;flex-shrink:0;cursor:pointer}
-.check-item label{font-size:13px;cursor:pointer;line-height:1.4}
-.check-item.checked label{color:#aaa;text-decoration:line-through}
-.additional{margin-top:0.75rem;border-top:1px solid #eee;padding-top:0.75rem}
-.additional label{font-size:12px;color:#666;display:block;margin-bottom:6px;font-weight:600}
-.add-inputs{display:flex;flex-direction:column;gap:6px}
-.add-row{display:flex;align-items:center;gap:8px}
-.add-row input[type=checkbox]{width:15px;height:15px;flex-shrink:0}
-.add-row input[type=text]{flex:1;font-size:13px;padding:4px 8px;height:30px;border:1px solid #ccc;border-radius:6px}
-.initials-row{display:flex;gap:10px;margin-top:0.75rem;align-items:center}
-.initials-row input{flex:1;font-size:13px;height:32px;padding:4px 8px;border:1px solid #ccc;border-radius:6px}
-.initials-row span{font-size:12px;color:#666;white-space:nowrap}
-.morning .section-header{background:#d8f3dc}
+.sec-body{padding:0.75rem 1rem 1rem;border-top:1px solid #eee}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:2px 1rem}
+@media(max-width:500px){.grid{grid-template-columns:1fr}}
+.ci{display:flex;align-items:flex-start;gap:8px;padding:5px 0;cursor:pointer}
+.ci input[type=checkbox]{margin-top:3px;width:16px;height:16px;flex-shrink:0;cursor:pointer}
+.ci label{font-size:13px;cursor:pointer;line-height:1.4}
+.ci.done label{color:#aaa;text-decoration:line-through}
+.extra{margin-top:0.75rem;border-top:1px solid #eee;padding-top:0.75rem}
+.extra-label{font-size:12px;color:#666;font-weight:600;margin-bottom:6px;display:block}
+.extra-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.extra-row input[type=checkbox]{width:15px;height:15px;flex-shrink:0}
+.extra-row input[type=text]{flex:1;font-size:13px;padding:4px 8px;height:30px;border:1px solid #ccc;border-radius:6px;font-family:system-ui,sans-serif}
+.sig-row{display:flex;gap:10px;margin-top:0.75rem;align-items:center;flex-wrap:wrap}
+.sig-row span{font-size:12px;color:#666;white-space:nowrap}
+.sig-row input{font-size:13px;height:32px;padding:4px 8px;border:1px solid #ccc;border-radius:6px;font-family:system-ui,sans-serif}
+.morning .sec-header{background:#d8f3dc}
 .morning .badge{background:#b7e4c7;color:#1b4332}
 .morning input[type=checkbox]{accent-color:#2d6a4f}
-.midshift .section-header{background:#d6e8f7}
+.midshift .sec-header{background:#d6e8f7}
 .midshift .badge{background:#a8ccf0;color:#0d2f4d}
 .midshift input[type=checkbox]{accent-color:#1d3557}
-.closing .section-header{background:#f7d6d6}
+.closing .sec-header{background:#f7d6d6}
 .closing .badge{background:#f4b8b8;color:#5c1e1e}
 .closing input[type=checkbox]{accent-color:#7b2d2d}
-.comments{background:#fff;border:1px solid #ddd;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem}
-.comments label{font-size:13px;color:#555;display:block;margin-bottom:6px;font-weight:600}
-.comments textarea{width:100%;font-size:13px;height:70px;resize:vertical;padding:6px 8px;border-radius:8px;border:1px solid #ccc}
-.submit-btn{width:100%;padding:0.85rem;font-size:15px;font-weight:500;border-radius:12px;background:#1a1a2e;color:white;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.comments-box{background:#fff;border:1px solid #ddd;border-radius:12px;padding:1rem;margin-bottom:1rem}
+.comments-box label{font-size:13px;color:#555;font-weight:600;display:block;margin-bottom:6px}
+.comments-box textarea{width:100%;font-size:13px;height:70px;resize:vertical;padding:6px 8px;border-radius:8px;border:1px solid #ccc;font-family:system-ui,sans-serif}
+.submit-btn{width:100%;padding:0.85rem;font-size:15px;font-weight:500;border-radius:12px;background:#1a1a2e;color:white;border:none;cursor:pointer;font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;gap:8px}
 .submit-btn:disabled{opacity:0.5;cursor:not-allowed}
-.progress-bar{height:5px;background:#ddd;border-radius:3px;margin-bottom:1rem;overflow:hidden}
-.progress-fill{height:100%;background:#2d6a4f;border-radius:3px;transition:width 0.3s}
-.setup-box{background:#fff;border:1px solid #ddd;border-radius:12px;padding:1.25rem;margin-bottom:1rem}
-.setup-box h3{font-size:14px;font-weight:600;margin-bottom:0.75rem}
-.setup-box p{font-size:13px;color:#444;line-height:1.6;margin-bottom:0.5rem}
-.setup-box input,.setup-box textarea{width:100%;font-size:13px;padding:6px 8px;border:1px solid #ccc;border-radius:6px;margin-top:4px}
-.setup-box .step{display:flex;gap:10px;margin-bottom:1rem;align-items:flex-start}
-.step-num{width:24px;height:24px;border-radius:50%;background:#1a1a2e;color:white;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.save-btn{margin-top:8px;padding:6px 16px;font-size:13px;cursor:pointer;border-radius:8px;border:1px solid #ccc;background:#f5f5f5}
-.success-box{background:#d8f3dc;border:1px solid #b7e4c7;border-radius:12px;padding:1.25rem;text-align:center;display:none}
-.success-box i{font-size:40px;color:#2d6a4f;display:block;margin-bottom:0.5rem}
-.success-box h3{font-size:16px;font-weight:600;color:#1b4332;margin-bottom:0.25rem}
-.success-box p{font-size:13px;color:#2d6a4f}
-.reset-btn{margin-top:0.75rem;padding:6px 20px;font-size:13px;border-radius:8px;background:white;border:1px solid #2d6a4f;color:#1b4332;cursor:pointer}
-.admin-section{background:#fff;border:1px solid #ddd;border-radius:12px;padding:1.25rem;margin-bottom:1rem}
-.admin-section h3{font-size:14px;font-weight:600;margin-bottom:0.75rem;color:#1a1a2e}
-.admin-item{display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid #f0f0f0}
+.success{background:#d8f3dc;border:1px solid #b7e4c7;border-radius:12px;padding:1.25rem;text-align:center;display:none;margin-top:1rem}
+.success i{font-size:40px;color:#2d6a4f;display:block;margin-bottom:0.5rem}
+.success h3{font-size:16px;font-weight:600;color:#1b4332;margin-bottom:0.25rem}
+.success p{font-size:13px;color:#2d6a4f}
+.reset-btn{margin-top:0.75rem;padding:6px 20px;font-size:13px;border-radius:8px;background:white;border:1px solid #2d6a4f;color:#1b4332;cursor:pointer;font-family:system-ui,sans-serif}
+.card{background:#fff;border:1px solid #ddd;border-radius:12px;padding:1.25rem;margin-bottom:1rem}
+.card h3{font-size:14px;font-weight:600;margin-bottom:0.75rem;color:#1a1a2e}
+.card p{font-size:13px;color:#444;line-height:1.6;margin-bottom:0.75rem}
+.card a{color:#1a1a2e}
+.step{display:flex;gap:10px;margin-bottom:1rem;align-items:flex-start}
+.step-num{width:24px;height:24px;border-radius:50%;background:#1a1a2e;color:white;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.field{width:100%;font-size:13px;padding:8px;border:1px solid #ccc;border-radius:6px;margin-top:6px;font-family:system-ui,sans-serif}
+.save-btn{margin-top:8px;padding:6px 16px;font-size:13px;cursor:pointer;border-radius:8px;border:1px solid #ccc;background:#f5f5f5;font-family:system-ui,sans-serif}
+.saved-msg{font-size:12px;color:#2d6a4f;margin-left:8px;display:none}
+.admin-item{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #f5f5f5}
 .admin-item span{flex:1;font-size:13px}
-.admin-item button{background:none;border:none;cursor:pointer;color:#c0392b;font-size:16px;padding:2px 6px}
+.admin-item button{background:none;border:none;cursor:pointer;color:#c0392b;font-size:18px;line-height:1;padding:0 4px}
 .admin-add{display:flex;gap:8px;margin-top:10px}
-.admin-add input{flex:1;font-size:13px;padding:6px 8px;border:1px solid #ccc;border-radius:6px;height:34px}
-.admin-add button{padding:6px 14px;font-size:13px;border-radius:6px;background:#1a1a2e;color:white;border:none;cursor:pointer;white-space:nowrap}
-.admin-tabs{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
-.admin-tab{padding:5px 12px;font-size:12px;border-radius:6px;border:1px solid #ccc;background:#eee;color:#555;cursor:pointer}
-.admin-tab.active{background:#1a1a2e;color:white;border-color:#1a1a2e}
-.info-note{font-size:12px;color:#888;margin-top:6px;font-style:italic}
+.admin-add input{flex:1;font-size:13px;padding:6px 8px;border:1px solid #ccc;border-radius:6px;height:34px;font-family:system-ui,sans-serif}
+.admin-add button{padding:6px 14px;font-size:13px;border-radius:6px;background:#1a1a2e;color:white;border:none;cursor:pointer;font-family:system-ui,sans-serif;white-space:nowrap}
+.sub-tabs{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
+.sub-tab{padding:5px 12px;font-size:12px;border-radius:6px;border:1px solid #ccc;background:#eee;color:#555;cursor:pointer;font-family:system-ui,sans-serif}
+.sub-tab.active{background:#1a1a2e;color:white;border-color:#1a1a2e}
+.sub-panel{display:none}
+.sub-panel.active{display:block}
+.note{font-size:12px;color:#888;margin-top:8px;font-style:italic}
 </style>
 </head>
 <body>
 <div class="app">
-  <h1>🎂 Cake Box – Daily Checklist</h1>
-  <div class="location-tag" id="loc-tag">Peterborough</div>
+<h1>🎂 Cake Box – Daily Checklist</h1>
+<div class="loc">Peterborough</div>
 
-  <div class="tab-btns">
-    <button class="tab-btn active" onclick="showTab('checklist')">Checklist</button>
-    <button class="tab-btn" onclick="showTab('admin')">Admin</button>
-    <button class="tab-btn" onclick="showTab('setup')">Slack setup</button>
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('checklist',this)">Checklist</button>
+  <button class="tab-btn" onclick="switchTab('admin',this)">Admin</button>
+  <button class="tab-btn" onclick="switchTab('setup',this)">Slack setup</button>
+</div>
+
+<!-- CHECKLIST TAB -->
+<div id="tab-checklist" class="tab-panel active">
+  <div class="top-bar">
+    <select id="staff-name"><option value="">Select your name...</option></select>
+    <input type="date" id="the-date">
   </div>
+  <div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
 
-  <div id="tab-checklist">
-    <div class="top-bar">
-      <select id="staff-name"><option value="">Select your name...</option></select>
-      <input type="date" id="the-date">
+  <div class="section morning">
+    <div class="sec-header" onclick="toggleSec('morning')">
+      <i class="ti ti-sun"></i><h2>Opening check</h2>
+      <span class="badge" id="badge-morning">0 done</span>
+      <i class="ti ti-chevron-down" id="chev-morning"></i>
     </div>
-    <div class="progress-bar"><div class="progress-fill" id="prog" style="width:0%"></div></div>
-
-    <div class="section morning">
-      <div class="section-header" onclick="toggleSection('morning')">
-        <i class="ti ti-sun"></i><h2>Opening check</h2>
-        <span class="badge" id="badge-morning">0 done</span>
-        <i class="ti ti-chevron-down" id="chev-morning"></i>
+    <div class="sec-body" id="body-morning">
+      <div class="grid" id="grid-morning"></div>
+      <div class="extra">
+        <span class="extra-label">Additional checks</span>
+        <div class="extra-row"><input type="checkbox"><input type="text" placeholder="Write check here..."></div>
+        <div class="extra-row"><input type="checkbox"><input type="text" placeholder="Write check here..."></div>
       </div>
-      <div class="section-body" id="body-morning">
-        <div class="items-grid" id="grid-morning"></div>
-        <div class="additional">
-          <label>Additional checks</label>
-          <div class="add-inputs">
-            <div class="add-row"><input type="checkbox"><input type="text" placeholder="Write check here..."></div>
-            <div class="add-row"><input type="checkbox"><input type="text" placeholder="Write check here..."></div>
-          </div>
-        </div>
-        <div class="initials-row">
-          <span>Initials</span><input type="text" id="init-morning" placeholder="e.g. JD" maxlength="4" style="max-width:70px">
-          <span>Time</span><input type="time" id="time-morning">
-        </div>
+      <div class="sig-row">
+        <span>Initials</span><input type="text" id="init-morning" placeholder="JD" maxlength="4" style="width:60px">
+        <span>Time</span><input type="time" id="time-morning">
       </div>
-    </div>
-
-    <div class="section midshift">
-      <div class="section-header" onclick="toggleSection('midshift')">
-        <i class="ti ti-sun-high"></i><h2>Mid-shift check (3–4pm)</h2>
-        <span class="badge" id="badge-midshift">0 done</span>
-        <i class="ti ti-chevron-down" id="chev-midshift"></i>
-      </div>
-      <div class="section-body" id="body-midshift">
-        <div class="items-grid" id="grid-midshift"></div>
-        <div class="additional">
-          <label>Additional checks</label>
-          <div class="add-inputs">
-            <div class="add-row"><input type="checkbox"><input type="text" placeholder="Write check here..."></div>
-            <div class="add-row"><input type="checkbox"><input type="text" placeholder="Write check here..."></div>
-          </div>
-        </div>
-        <div class="initials-row">
-          <span>Initials</span><input type="text" id="init-midshift" placeholder="e.g. JD" maxlength="4" style="max-width:70px">
-          <span>Time</span><input type="time" id="time-midshift">
-        </div>
-      </div>
-    </div>
-
-    <div class="section closing">
-      <div class="section-header" onclick="toggleSection('closing')">
-        <i class="ti ti-moon"></i><h2>Closing check</h2>
-        <span class="badge" id="badge-closing">0 done</span>
-        <i class="ti ti-chevron-down" id="chev-closing"></i>
-      </div>
-      <div class="section-body" id="body-closing">
-        <div class="items-grid" id="grid-closing"></div>
-        <div class="additional">
-          <label>Additional checks</label>
-          <div class="add-inputs">
-            <div class="add-row"><input type="checkbox"><input type="text" placeholder="Write check here..."></div>
-            <div class="add-row"><input type="checkbox"><input type="text" placeholder="Write check here..."></div>
-          </div>
-        </div>
-        <div class="initials-row">
-          <span>Initials</span><input type="text" id="init-closing" placeholder="e.g. JD" maxlength="4" style="max-width:70px">
-          <span>Time</span><input type="time" id="time-closing">
-        </div>
-      </div>
-    </div>
-
-    <div class="comments">
-      <label>Comments — anything unticked must be explained here</label>
-      <textarea id="comments" placeholder="Leave blank if everything is ticked..."></textarea>
-    </div>
-
-    <button class="submit-btn" id="submit-btn" onclick="submitForm()">
-      <i class="ti ti-brand-slack"></i> Submit to Slack
-    </button>
-    <div class="success-box" id="success-box">
-      <i class="ti ti-circle-check"></i>
-      <h3>Submitted!</h3>
-      <p id="success-msg"></p>
-      <button class="reset-btn" onclick="resetForm()">Start a new checklist</button>
     </div>
   </div>
 
-  <div id="tab-admin" style="display:none">
-    <div class="admin-section">
-      <h3>Staff names</h3>
-      <div id="staff-list"></div>
-      <div class="admin-add">
-        <input type="text" id="new-staff" placeholder="Enter staff name...">
-        <button onclick="addStaff()">Add name</button>
-      </div>
-      <p class="info-note">Changes save automatically and appear in the checklist immediately.</p>
+  <div class="section midshift">
+    <div class="sec-header" onclick="toggleSec('midshift')">
+      <i class="ti ti-sun-high"></i><h2>Mid-shift check (3–4pm)</h2>
+      <span class="badge" id="badge-midshift">0 done</span>
+      <i class="ti ti-chevron-down" id="chev-midshift"></i>
     </div>
-
-    <div class="admin-section">
-      <h3>Checklist items</h3>
-      <div class="admin-tabs">
-        <button class="admin-tab active" onclick="showAdminSection('morning')">Opening</button>
-        <button class="admin-tab" onclick="showAdminSection('midshift')">Mid-shift</button>
-        <button class="admin-tab" onclick="showAdminSection('closing')">Closing</button>
+    <div class="sec-body" id="body-midshift">
+      <div class="grid" id="grid-midshift"></div>
+      <div class="extra">
+        <span class="extra-label">Additional checks</span>
+        <div class="extra-row"><input type="checkbox"><input type="text" placeholder="Write check here..."></div>
+        <div class="extra-row"><input type="checkbox"><input type="text" placeholder="Write check here..."></div>
       </div>
-      <div id="admin-items-morning"><div id="admin-list-morning"></div></div>
-      <div id="admin-items-midshift" style="display:none"><div id="admin-list-midshift"></div></div>
-      <div id="admin-items-closing" style="display:none"><div id="admin-list-closing"></div></div>
-      <div class="admin-add" style="margin-top:12px">
-        <input type="text" id="new-item" placeholder="Enter new check...">
-        <button onclick="addItem()">Add check</button>
+      <div class="sig-row">
+        <span>Initials</span><input type="text" id="init-midshift" placeholder="JD" maxlength="4" style="width:60px">
+        <span>Time</span><input type="time" id="time-midshift">
       </div>
-      <p class="info-note">Click the red × to remove a check. Changes save automatically.</p>
     </div>
   </div>
 
-  <div id="tab-setup" style="display:none">
-    <div class="setup-box">
-      <h3>Connect to Slack — 3 steps</h3>
-      <div class="step">
-        <div class="step-num">1</div>
-        <div>
-          <p><strong>Create a Slack webhook for Peterborough</strong><br>
-          Go to <a href="https://api.slack.com/apps" target="_blank">api.slack.com/apps</a> → "Create New App" → "From scratch". Name it "Cake Box Peterborough". Go to "Incoming Webhooks", toggle ON, click "Add New Webhook to Workspace", choose the <strong>Peterborough</strong> Slack channel, and copy the webhook URL.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div>
-          <p><strong>Paste your webhook URL here</strong></p>
-          <input type="text" id="webhook-url" placeholder="https://hooks.slack.com/services/...">
-          <button class="save-btn" onclick="saveWebhook()">Save</button>
-          <span id="webhook-saved" style="font-size:12px;color:#2d6a4f;margin-left:8px;display:none">✓ Saved!</span>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div><p><strong>Done.</strong> Staff submit the checklist and it posts straight to your Peterborough Slack channel. Use the Admin tab to manage staff names and checklist items — no code needed.</p></div>
-      </div>
-      <p style="margin-top:0.75rem;font-size:12px;color:#888">Webhook URL is saved in the browser on this device only.</p>
+  <div class="section closing">
+    <div class="sec-header" onclick="toggleSec('closing')">
+      <i class="ti ti-moon"></i><h2>Closing check</h2>
+      <span class="badge" id="badge-closing">0 done</span>
+      <i class="ti ti-chevron-down" id="chev-closing"></i>
     </div>
+    <div class="sec-body" id="body-closing">
+      <div class="grid" id="grid-closing"></div>
+      <div class="extra">
+        <span class="extra-label">Additional checks</span>
+        <div class="extra-row"><input type="checkbox"><input type="text" placeholder="Write check here..."></div>
+        <div class="extra-row"><input type="checkbox"><input type="text" placeholder="Write check here..."></div>
+      </div>
+      <div class="sig-row">
+        <span>Initials</span><input type="text" id="init-closing" placeholder="JD" maxlength="4" style="width:60px">
+        <span>Time</span><input type="time" id="time-closing">
+      </div>
+    </div>
+  </div>
+
+  <div class="comments-box">
+    <label>Comments — anything unticked must be explained here</label>
+    <textarea id="comments" placeholder="Leave blank if everything is ticked..."></textarea>
+  </div>
+
+  <button class="submit-btn" id="submit-btn" onclick="submitForm()">
+    <i class="ti ti-brand-slack"></i> Submit to Slack
+  </button>
+  <div class="success" id="success-box">
+    <i class="ti ti-circle-check"></i>
+    <h3>Submitted!</h3>
+    <p id="success-msg"></p>
+    <button class="reset-btn" onclick="resetForm()">Start a new checklist</button>
   </div>
 </div>
 
-<script>
-const LOCATION = "Peterborough";
-const SK = "cb_" + LOCATION.replace(/\s+/g,"_").toLowerCase() + "_";
+<!-- ADMIN TAB -->
+<div id="tab-admin" class="tab-panel">
+  <div class="card">
+    <h3>Staff names</h3>
+    <div id="staff-list"></div>
+    <div class="admin-add">
+      <input type="text" id="new-staff" placeholder="Enter staff name...">
+      <button onclick="addStaff()">Add name</button>
+    </div>
+    <p class="note">Changes save automatically and appear in the checklist immediately.</p>
+  </div>
+  <div class="card">
+    <h3>Checklist items</h3>
+    <div class="sub-tabs">
+      <button class="sub-tab active" onclick="switchSubTab('morning',this)">Opening</button>
+      <button class="sub-tab" onclick="switchSubTab('midshift',this)">Mid-shift</button>
+      <button class="sub-tab" onclick="switchSubTab('closing',this)">Closing</button>
+    </div>
+    <div id="sub-morning" class="sub-panel active"><div id="admin-list-morning"></div></div>
+    <div id="sub-midshift" class="sub-panel"><div id="admin-list-midshift"></div></div>
+    <div id="sub-closing" class="sub-panel"><div id="admin-list-closing"></div></div>
+    <div class="admin-add" style="margin-top:12px">
+      <input type="text" id="new-item" placeholder="Enter new check...">
+      <button onclick="addItem()">Add check</button>
+    </div>
+    <p class="note">Tap × to remove a check. Changes save automatically.</p>
+  </div>
+</div>
 
-const DEFAULT_SECTIONS = {
+<!-- SETUP TAB -->
+<div id="tab-setup" class="tab-panel">
+  <div class="card">
+    <h3>Connect to Slack — 3 steps</h3>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <p><strong>Create a Slack webhook for Peterborough</strong><br>
+        Go to <a href="https://api.slack.com/apps" target="_blank">api.slack.com/apps</a> → "Create New App" → "From scratch". Name it "Cake Box Peterborough". Go to "Incoming Webhooks", toggle ON, click "Add New Webhook to Workspace", choose the <strong>Peterborough</strong> Slack channel, and copy the webhook URL.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <p><strong>Paste your webhook URL here</strong></p>
+        <input type="text" id="webhook-url" class="field" placeholder="https://hooks.slack.com/services/...">
+        <button class="save-btn" onclick="saveWebhook()">Save</button>
+        <span class="saved-msg" id="webhook-saved">✓ Saved!</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div><p><strong>Done.</strong> Submissions will post straight to your Peterborough Slack channel. Use the Admin tab to manage staff names and checklist items anytime.</p></div>
+    </div>
+    <p class="note">Webhook URL is saved in this browser on this device only.</p>
+  </div>
+</div>
+
+</div>
+
+<script>
+var LOCATION = "Peterborough";
+var SK = "cb_" + LOCATION.replace(/\s+/g,"_").toLowerCase() + "_";
+
+var DEFAULT = {
   morning: ["Fridges working & temps recorded", "Hand washing facilities checked", "Food areas clean & safe", "Shop floor clean (tiles/lino)", "Cakes checked (quality, labels, alignment)", "Counters clean, organised, dust-free", "Glass displays & iPads clean & ON/charging", "Soaps, cloths, paper towels stocked", "No signs of pests", "Change sufficient in till", "Check for new online orders", "Display fridge stocked & ready", "Staff fit & ready for work", "ALL platforms live (UberEats etc.)", "Out-of-stock items removed from platforms", "Turn on Cash Note Checker", "SFBB completed"],
-  midshift: ["Cakes checked again (quality maintained)", "Display fridge topped up & temps recorded", "Temperature log updated", "Hand hygiene being maintained by staff", "Counters & shop floor maintained clean", "Display fridges cleaned", "Boxes (8", 10", slice etc.) stocked", "ALL platforms ON and LIVE", "Special orders reviewed [N/A if none]", "Emails & WhatsApps checked & actioned", "Check cake dates — repurpose if needed", "Out-of-stock items removed from platforms"],
-  closing: ["Expiring stock removed & recorded", "Fruit stock levels checked", "Display fridge stocked for next day & temps recorded", "Fridge temperatures recorded at close", "Full clean completed (floors, counters, displays)", "Handwash stations restocked", "Petty cash invoices uploaded to Dropbox [N/A]", "All emails dealt with", "Bins emptied", "Cash up completed", "SFBB completed", "Accidents/incidents? Yes — logged / No", "Delivery platforms disputes/refunds checked", "Wastage report filled in", "Daily Sales Sheet completed", "AC/Heater turned off", "Cash Note Checker turned off", "Shop secured (CCTV checked, doors locked)", "Clock out completed", "Cab/Evermile delivery arranged [N/A]", "Photos printed [N/A]"]
+  midshift: ["Cakes checked again (quality maintained)", "Display fridge topped up & temps recorded", "Temperature log updated", "Hand hygiene being maintained by staff", "Counters & shop floor maintained clean", "Display fridges cleaned", "Boxes (8\", 10\", slice etc.) stocked", "ALL platforms ON and LIVE", "Special orders reviewed [N/A if none]", "Emails & WhatsApps checked & actioned", "Check cake dates \u2014 repurpose if needed", "Out-of-stock items removed from platforms"],
+  closing: ["Expiring stock removed & recorded", "Fruit stock levels checked", "Display fridge stocked for next day & temps recorded", "Fridge temperatures recorded at close", "Full clean completed (floors, counters, displays)", "Handwash stations restocked", "Petty cash invoices uploaded to Dropbox [N/A]", "All emails dealt with", "Bins emptied", "Cash up completed", "SFBB completed", "Accidents/incidents? Yes \u2014 logged / No", "Delivery platforms disputes/refunds checked", "Wastage report filled in", "Daily Sales Sheet completed", "AC/Heater turned off", "Cash Note Checker turned off", "Shop secured (CCTV checked, doors locked)", "Clock out completed", "Cab/Evermile delivery arranged [N/A]", "Photos printed [N/A]"]
 };
 
-const DEFAULT_STAFF = ["Staff Member 1","Staff Member 2","Staff Member 3"];
+var DEFAULT_STAFF = ["Staff 1","Staff 2","Staff 3"];
+var sections = {};
+var staffList = [];
+var checkState = {morning:{},midshift:{},closing:{}};
+var currentSubTab = "morning";
 
-let sections = {};
-let staffList = [];
-let checkState = {morning:{},midshift:{},closing:{}};
-let currentAdminSection = "morning";
-
-function loadData(){
-  try{
-    sections.morning = JSON.parse(localStorage.getItem(SK+"morning")) || DEFAULT_SECTIONS.morning.slice();
-    sections.midshift = JSON.parse(localStorage.getItem(SK+"midshift")) || DEFAULT_SECTIONS.midshift.slice();
-    sections.closing = JSON.parse(localStorage.getItem(SK+"closing")) || DEFAULT_SECTIONS.closing.slice();
-    staffList = JSON.parse(localStorage.getItem(SK+"staff")) || DEFAULT_STAFF.slice();
-  }catch(e){
-    sections = {morning:DEFAULT_SECTIONS.morning.slice(),midshift:DEFAULT_SECTIONS.midshift.slice(),closing:DEFAULT_SECTIONS.closing.slice()};
-    staffList = DEFAULT_STAFF.slice();
-  }
+function loadData() {
+  try { sections.morning = JSON.parse(localStorage.getItem(SK+"morning")) || DEFAULT.morning.slice(); } catch(e) { sections.morning = DEFAULT.morning.slice(); }
+  try { sections.midshift = JSON.parse(localStorage.getItem(SK+"midshift")) || DEFAULT.midshift.slice(); } catch(e) { sections.midshift = DEFAULT.midshift.slice(); }
+  try { sections.closing = JSON.parse(localStorage.getItem(SK+"closing")) || DEFAULT.closing.slice(); } catch(e) { sections.closing = DEFAULT.closing.slice(); }
+  try { staffList = JSON.parse(localStorage.getItem(SK+"staff")) || DEFAULT_STAFF.slice(); } catch(e) { staffList = DEFAULT_STAFF.slice(); }
 }
 
-function saveData(){
+function saveData() {
   localStorage.setItem(SK+"morning", JSON.stringify(sections.morning));
   localStorage.setItem(SK+"midshift", JSON.stringify(sections.midshift));
   localStorage.setItem(SK+"closing", JSON.stringify(sections.closing));
   localStorage.setItem(SK+"staff", JSON.stringify(staffList));
 }
 
-function buildStaffDropdown(){
-  const sel = document.getElementById("staff-name");
-  const cur = sel.value;
+function buildStaffDropdown() {
+  var sel = document.getElementById("staff-name");
+  var cur = sel.value;
   sel.innerHTML = '<option value="">Select your name...</option>';
-  staffList.forEach(n=>{const o=document.createElement("option");o.value=n;o.textContent=n;sel.appendChild(o);});
-  if(cur) sel.value = cur;
+  staffList.forEach(function(n) {
+    var o = document.createElement("option");
+    o.value = n; o.textContent = n; sel.appendChild(o);
+  });
+  if (cur) sel.value = cur;
 }
 
-function buildGrid(section){
-  const grid = document.getElementById("grid-"+section);
+function buildGrid(s) {
+  var grid = document.getElementById("grid-"+s);
   grid.innerHTML = "";
-  checkState[section] = {};
-  sections[section].forEach((txt,i)=>{
-    const id=section+"-"+i;
-    const div=document.createElement("div");
-    div.className="check-item";div.id="item-"+id;
-    div.innerHTML=`<input type="checkbox" id="${id}" onchange="tick('${section}',${i},this)"><label for="${id}">${txt}</label>`;
+  checkState[s] = {};
+  sections[s].forEach(function(txt, i) {
+    var id = s+"-"+i;
+    var div = document.createElement("div");
+    div.className = "ci"; div.id = "ci-"+id;
+    div.innerHTML = '<input type="checkbox" id="'+id+'" onchange="tick(''+s+'','+i+',this)"><label for="'+id+'">'+txt+'</label>';
     grid.appendChild(div);
-    checkState[section][i]=false;
+    checkState[s][i] = false;
   });
-  updateBadge(section);
+  updateBadge(s);
 }
 
-function tick(section,i,el){
-  checkState[section][i]=el.checked;
-  document.getElementById("item-"+section+"-"+i).classList.toggle("checked",el.checked);
-  updateBadge(section);updateProgress();
+function tick(s, i, el) {
+  checkState[s][i] = el.checked;
+  document.getElementById("ci-"+s+"-"+i).classList.toggle("done", el.checked);
+  updateBadge(s); updateProgress();
 }
 
-function updateBadge(section){
-  const done=Object.values(checkState[section]).filter(Boolean).length;
-  document.getElementById("badge-"+section).textContent=done+" / "+sections[section].length+" done";
+function updateBadge(s) {
+  var done = Object.values(checkState[s]).filter(Boolean).length;
+  document.getElementById("badge-"+s).textContent = done+" / "+sections[s].length+" done";
 }
 
-function updateProgress(){
-  let total=0,done=0;
-  ["morning","midshift","closing"].forEach(s=>{total+=sections[s].length;done+=Object.values(checkState[s]).filter(Boolean).length;});
-  document.getElementById("prog").style.width=Math.round(done/total*100)+"%";
-}
-
-function toggleSection(s){
-  const body=document.getElementById("body-"+s);
-  const open=body.style.display!=="none";
-  body.style.display=open?"none":"block";
-  document.getElementById("chev-"+s).style.transform=open?"rotate(-90deg)":"";
-}
-
-function openAllSections(){
-  ["morning","midshift","closing"].forEach(s=>{
-    document.getElementById("body-"+s).style.display="block";
-    document.getElementById("chev-"+s).style.transform="";
+function updateProgress() {
+  var total = 0, done = 0;
+  ["morning","midshift","closing"].forEach(function(s) {
+    total += sections[s].length;
+    done += Object.values(checkState[s]).filter(Boolean).length;
   });
+  document.getElementById("prog").style.width = Math.round(done/total*100)+"%";
 }
 
-function showTab(t){
-  ["checklist","admin","setup"].forEach(id=>document.getElementById("tab-"+id).style.display=t===id?"block":"none");
-  document.querySelectorAll(".tab-btn").forEach((b,i)=>{b.classList.toggle("active",["checklist","admin","setup"][i]===t);});
-  if(t==="admin"){buildAdminStaff();buildAdminItems("morning");buildAdminItems("midshift");buildAdminItems("closing");}
+function toggleSec(s) {
+  var body = document.getElementById("body-"+s);
+  var open = body.style.display !== "none";
+  body.style.display = open ? "none" : "block";
+  document.getElementById("chev-"+s).style.transform = open ? "rotate(-90deg)" : "";
 }
 
-function showAdminSection(s){
-  currentAdminSection=s;
-  ["morning","midshift","closing"].forEach(sec=>{document.getElementById("admin-items-"+sec).style.display=sec===s?"block":"none";});
-  document.querySelectorAll(".admin-tab").forEach((b,i)=>{b.classList.toggle("active",["morning","midshift","closing"][i]===s);});
+function switchTab(name, btn) {
+  document.querySelectorAll(".tab-panel").forEach(function(p) { p.classList.remove("active"); });
+  document.querySelectorAll(".tab-btn").forEach(function(b) { b.classList.remove("active"); });
+  document.getElementById("tab-"+name).classList.add("active");
+  btn.classList.add("active");
+  if (name === "admin") { buildAdminStaff(); buildAdminItems("morning"); buildAdminItems("midshift"); buildAdminItems("closing"); }
+  if (name === "setup") { var saved = localStorage.getItem(SK+"webhook"); if(saved) document.getElementById("webhook-url").value = saved; }
 }
 
-function buildAdminStaff(){
-  const el=document.getElementById("staff-list");
-  el.innerHTML="";
-  staffList.forEach((name,i)=>{
-    const row=document.createElement("div");row.className="admin-item";
-    row.innerHTML=`<span>${name}</span><button onclick="removeStaff(${i})" title="Remove">×</button>`;
+function switchSubTab(name, btn) {
+  currentSubTab = name;
+  document.querySelectorAll(".sub-panel").forEach(function(p) { p.classList.remove("active"); });
+  document.querySelectorAll(".sub-tab").forEach(function(b) { b.classList.remove("active"); });
+  document.getElementById("sub-"+name).classList.add("active");
+  btn.classList.add("active");
+}
+
+function buildAdminStaff() {
+  var el = document.getElementById("staff-list");
+  el.innerHTML = "";
+  staffList.forEach(function(name, i) {
+    var row = document.createElement("div"); row.className = "admin-item";
+    row.innerHTML = '<span>'+name+'</span><button onclick="removeStaff('+i+')">×</button>';
     el.appendChild(row);
   });
 }
 
-function addStaff(){
-  const inp=document.getElementById("new-staff");
-  const val=inp.value.trim();
-  if(!val)return;
-  staffList.push(val);inp.value="";
-  saveData();buildStaffDropdown();buildAdminStaff();
+function addStaff() {
+  var inp = document.getElementById("new-staff");
+  var val = inp.value.trim();
+  if (!val) return;
+  staffList.push(val); inp.value = "";
+  saveData(); buildStaffDropdown(); buildAdminStaff();
 }
 
-function removeStaff(i){
-  if(!confirm("Remove "+staffList[i]+"?"))return;
+function removeStaff(i) {
+  if (!confirm("Remove "+staffList[i]+"?")) return;
   staffList.splice(i,1);
-  saveData();buildStaffDropdown();buildAdminStaff();
+  saveData(); buildStaffDropdown(); buildAdminStaff();
 }
 
-function buildAdminItems(s){
-  const el=document.getElementById("admin-list-"+s);
-  el.innerHTML="";
-  sections[s].forEach((txt,i)=>{
-    const row=document.createElement("div");row.className="admin-item";
-    row.innerHTML=`<span>${txt}</span><button onclick="removeItem('${s}',${i})" title="Remove">×</button>`;
+function buildAdminItems(s) {
+  var el = document.getElementById("admin-list-"+s);
+  el.innerHTML = "";
+  sections[s].forEach(function(txt, i) {
+    var row = document.createElement("div"); row.className = "admin-item";
+    row.innerHTML = '<span>'+txt+'</span><button onclick="removeItem(''+s+'','+i+')">×</button>';
     el.appendChild(row);
   });
 }
 
-function addItem(){
-  const inp=document.getElementById("new-item");
-  const val=inp.value.trim();
-  if(!val)return;
-  sections[currentAdminSection].push(val);inp.value="";
-  saveData();buildGrid(currentAdminSection);buildAdminItems(currentAdminSection);updateProgress();
+function addItem() {
+  var inp = document.getElementById("new-item");
+  var val = inp.value.trim();
+  if (!val) return;
+  sections[currentSubTab].push(val); inp.value = "";
+  saveData(); buildGrid(currentSubTab); buildAdminItems(currentSubTab); updateProgress();
 }
 
-function removeItem(s,i){
-  if(!confirm("Remove this check?"))return;
+function removeItem(s, i) {
+  if (!confirm("Remove this check?")) return;
   sections[s].splice(i,1);
-  saveData();buildGrid(s);buildAdminItems(s);updateProgress();
+  saveData(); buildGrid(s); buildAdminItems(s); updateProgress();
 }
 
-function saveWebhook(){
-  const url=document.getElementById("webhook-url").value.trim();
-  if(url){localStorage.setItem(SK+"webhook",url);document.getElementById("webhook-saved").style.display="inline";setTimeout(()=>document.getElementById("webhook-saved").style.display="none",2000);}
-}
-
-function getUnticked(s){return sections[s].filter((_,i)=>!checkState[s][i]);}
-
-async function submitForm(){
-  const name=document.getElementById("staff-name").value;
-  const date=document.getElementById("the-date").value;
-  if(!name){alert("Please select your name first.");return;}
-  if(!date){alert("Please select today's date.");return;}
-  const webhook=localStorage.getItem(SK+"webhook");
-  if(!webhook){alert("No Slack webhook set up yet. Go to the Slack setup tab.");return;}
-  const btn=document.getElementById("submit-btn");
-  btn.disabled=true;btn.innerHTML="Sending...";
-  const u={morning:getUnticked("morning"),midshift:getUnticked("midshift"),closing:getUnticked("closing")};
-  const total=sections.morning.length+sections.midshift.length+sections.closing.length;
-  const done=total-u.morning.length-u.midshift.length-u.closing.length;
-  const allClear=done===total;
-  const fmt=s=>s.length===0?"✅ All done":"❌ Missed:\n"+s.map(x=>"  • "+x).join("\n");
-  const comments=document.getElementById("comments").value.trim();
-  const d=new Date(date);
-  const dateStr=d.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
-  const text=`*🎂 Cake Box – ${LOCATION} Daily Checklist*\n*${dateStr}*  |  Submitted by *${name}*\n\n*Progress: ${done}/${total} items ${allClear?"🟢 All complete":"🔴 Items missed"}*\n\n*🌅 Opening check*\n${fmt(u.morning)}\n\n*☀ Mid-shift check*\n${fmt(u.midshift)}\n\n*🌙 Closing check*\n${fmt(u.closing)}${comments?"\n\n*Comments:*\n"+comments:""}`;
-  try{
-    await fetch(webhook,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({text})});
-    btn.style.display="none";
-    document.getElementById("success-box").style.display="block";
-    document.getElementById("success-msg").textContent="Posted to Slack for "+LOCATION+" by "+name+" on "+dateStr+".";
-  }catch(e){
-    alert("Could not reach Slack. Check your webhook URL.");
-    btn.disabled=false;btn.innerHTML="Submit to Slack";
+function saveWebhook() {
+  var url = document.getElementById("webhook-url").value.trim();
+  if (url) {
+    localStorage.setItem(SK+"webhook", url);
+    var msg = document.getElementById("webhook-saved");
+    msg.style.display = "inline";
+    setTimeout(function() { msg.style.display = "none"; }, 2000);
   }
 }
 
-function resetForm(){
-  ["morning","midshift","closing"].forEach(s=>{
-    checkState[s]={};
-    document.querySelectorAll("#grid-"+s+" input[type=checkbox]").forEach(cb=>cb.checked=false);
-    document.querySelectorAll("#grid-"+s+" .check-item").forEach(el=>el.classList.remove("checked"));
-    sections[s].forEach((_,i)=>checkState[s][i]=false);
+function getUnticked(s) {
+  return sections[s].filter(function(_, i) { return !checkState[s][i]; });
+}
+
+function submitForm() {
+  var name = document.getElementById("staff-name").value;
+  var date = document.getElementById("the-date").value;
+  if (!name) { alert("Please select your name first."); return; }
+  if (!date) { alert("Please select today's date."); return; }
+  var webhook = localStorage.getItem(SK+"webhook");
+  if (!webhook) { alert("No Slack webhook set up yet. Go to the Slack setup tab."); return; }
+  var btn = document.getElementById("submit-btn");
+  btn.disabled = true; btn.textContent = "Sending...";
+  var u = { morning: getUnticked("morning"), midshift: getUnticked("midshift"), closing: getUnticked("closing") };
+  var total = sections.morning.length + sections.midshift.length + sections.closing.length;
+  var done = total - u.morning.length - u.midshift.length - u.closing.length;
+  var allClear = done === total;
+  function fmt(arr) { return arr.length === 0 ? "✅ All done" : "❌ Missed:\n" + arr.map(function(x) { return "  • "+x; }).join("\n"); }
+  var comments = document.getElementById("comments").value.trim();
+  var d = new Date(date);
+  var dateStr = d.toLocaleDateString("en-GB", {weekday:"long",day:"numeric",month:"long",year:"numeric"});
+  var text = "*🎂 Cake Box – "+LOCATION+" Daily Checklist*\n*"+dateStr+"*  |  Submitted by *"+name+"*\n\n*Progress: "+done+"/"+total+" items "+(allClear?"🟢 All complete":"🔴 Items missed")+"*\n\n*🌅 Opening check*\n"+fmt(u.morning)+"\n\n*☀ Mid-shift check*\n"+fmt(u.midshift)+"\n\n*🌙 Closing check*\n"+fmt(u.closing)+(comments?"\n\n*Comments:*\n"+comments:"");
+  fetch(webhook, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({text:text})})
+    .then(function() {
+      btn.style.display = "none";
+      document.getElementById("success-box").style.display = "block";
+      document.getElementById("success-msg").textContent = "Posted to Slack for "+LOCATION+" by "+name+" on "+dateStr+".";
+    })
+    .catch(function() {
+      alert("Could not reach Slack. Check your webhook URL in the setup tab.");
+      btn.disabled = false; btn.textContent = "Submit to Slack";
+    });
+}
+
+function resetForm() {
+  ["morning","midshift","closing"].forEach(function(s) {
+    checkState[s] = {};
+    document.querySelectorAll("#grid-"+s+" input[type=checkbox]").forEach(function(cb) { cb.checked = false; });
+    document.querySelectorAll("#grid-"+s+" .ci").forEach(function(el) { el.classList.remove("done"); });
+    sections[s].forEach(function(_, i) { checkState[s][i] = false; });
     updateBadge(s);
   });
-  document.getElementById("comments").value="";
-  document.getElementById("staff-name").value="";
-  document.getElementById("the-date").value=new Date().toISOString().slice(0,10);
-  document.getElementById("submit-btn").style.display="flex";
-  document.getElementById("submit-btn").disabled=false;
-  document.getElementById("submit-btn").innerHTML="<i class=\"ti ti-brand-slack\"></i> Submit to Slack";
-  document.getElementById("success-box").style.display="none";
+  document.getElementById("comments").value = "";
+  document.getElementById("staff-name").value = "";
+  document.getElementById("the-date").value = new Date().toISOString().slice(0,10);
+  var btn = document.getElementById("submit-btn");
+  btn.style.display = "flex"; btn.disabled = false; btn.innerHTML = '<i class="ti ti-brand-slack"></i> Submit to Slack';
+  document.getElementById("success-box").style.display = "none";
   updateProgress();
 }
 
 loadData();
 buildStaffDropdown();
-buildGrid("morning");buildGrid("midshift");buildGrid("closing");
-openAllSections();
-document.getElementById("the-date").value=new Date().toISOString().slice(0,10);
-const saved=localStorage.getItem(SK+"webhook");
-if(saved)document.getElementById("webhook-url").value=saved;
+buildGrid("morning"); buildGrid("midshift"); buildGrid("closing");
+document.getElementById("the-date").value = new Date().toISOString().slice(0,10);
 </script>
 </body>
 </html>
